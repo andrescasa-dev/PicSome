@@ -1,8 +1,13 @@
+import { useContext } from 'react'
+import Image from '../components/Image'
+import { userContext } from '../context/userContext'
 
 const Photos = props => {
+  const { photos } = useContext(userContext)
+  const imagesDom = photos.map(imageData => <Image key={imageData.id} {...imageData} />)
   return (
-    <main>
-      <h1 className="text-3xl">Images go here</h1>
+    <main className='flex flex-wrap items-center justify-between px-10 pb-10'>
+      {imagesDom}
     </main>
   )
 }
