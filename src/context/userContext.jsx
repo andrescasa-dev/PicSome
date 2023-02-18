@@ -6,7 +6,12 @@ const userContext = createContext()
 
 const UserContextProvider = ({ children }) => {
   const [photos, setPhotos] = useState([])
-
+  const updatePhoto = (id, newPhoto) => {
+    const newPhotos = photos.map((curr, i) => {
+      return curr.id === id ? { ...curr, ...newPhoto } : curr
+    })
+    setPhotos(newPhotos)
+  }
   useEffect(() => {
     fetch(API_URL)
       .then(response => response.json())
@@ -14,7 +19,7 @@ const UserContextProvider = ({ children }) => {
   }, [])
 
   return (
-    <userContext.Provider value={{ photos }}>
+    <userContext.Provider value={{ photos, updatePhoto }}>
       {children}
     </userContext.Provider>
   )
