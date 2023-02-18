@@ -5,7 +5,7 @@ import { UserContextProvider } from './context/userContext'
 function App () {
   return (
     <UserContextProvider>
-      <div className="App font-sans">
+      <div className="App font-sans pb-16">
         <Header/>
         <Outlet/>
       </div>

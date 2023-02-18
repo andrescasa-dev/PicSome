@@ -1,6 +1,13 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { userContext } from '../context/userContext'
 
 const Header = props => {
+  console.log(userContext)
+  const { cartItems } = useContext(userContext)
+  const cartIcon = cartItems.length > 0
+    ? <i className="ri-shopping-cart-2-fill ri-fw ri-2x"></i>
+    : <i className="ri-shopping-cart-2-line ri-fw ri-2x"></i>
   return (
     <div className="flex justify-between items-center p-4 bg-gray-800 text-white">
       <Link to="/">
@@ -8,7 +15,7 @@ const Header = props => {
       </Link>
 
       <Link to='Cart'>
-      <i className="ri-shopping-cart-line ri-fw ri-2x"></i>
+      {cartIcon}
       </Link>
     </div>
   )

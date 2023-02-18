@@ -7,7 +7,6 @@ const userContext = createContext()
 const UserContextProvider = ({ children }) => {
   const [photos, setPhotos] = useState([])
   const [cartItems, setCartItems] = useState([])
-  console.log({ cartItems })
   const updatePhoto = (id, newPhoto) => {
     const newPhotos = photos.map((curr, i) => {
       return curr.id === id ? { ...curr, ...newPhoto } : curr
@@ -18,8 +17,7 @@ const UserContextProvider = ({ children }) => {
     setCartItems([...cartItems, photo])
   }
   const removeCartItem = (id) => {
-    const newCartItems = cartItems.filter(item => item.id !== id)
-    setCartItems(newCartItems)
+    setCartItems((prevCartItems) => prevCartItems.filter(item => item.id !== id))
   }
   useEffect(() => {
     fetch(API_URL)
@@ -28,7 +26,7 @@ const UserContextProvider = ({ children }) => {
   }, [])
 
   return (
-    <userContext.Provider value={{ photos, updatePhoto, addCartItem, removeCartItem }}>
+    <userContext.Provider value={{ photos, updatePhoto, addCartItem, removeCartItem, cartItems }}>
       {children}
     </userContext.Provider>
   )
