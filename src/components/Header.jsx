@@ -9,12 +9,12 @@ const Header = props => {
     ? <i className="ri-shopping-cart-2-fill ri-fw ri-2x"></i>
     : <i className="ri-shopping-cart-2-line ri-fw ri-2x"></i>
   return (
-    <div className="flex justify-between items-center p-4 bg-gray-800 text-white">
+    <div className="flex justify-between items-center p-6 px-10 mb-8 bg-gray-800 text-white">
       <Link to="/">
-      <h2 className="text-3xl font-bold ">Pic Some</h2>
+      <h2 className="text-4xl font-bold ">Pic Some</h2>
       </Link>
 
-      <Link to='Cart'>
+      <Link className='bg-gray-700 rounded-lg px-4 py-1' to='Cart'>
       {cartIcon}
       </Link>
     </div>

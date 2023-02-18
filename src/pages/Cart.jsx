@@ -11,9 +11,9 @@ const Cart = (props) => {
     ? `Total: ${sumUp}`
     : 'You do not have any items in cart, lets add some pictures'
   return (
-    <main className='flex flex-col items-center gap-12'>
-      <h1 className="text-3xl text-center p-10">Check out</h1>
-      <div className='grid auto-rows-[10rem] gap-4 p-4'>
+    <main className='flex flex-col items-center gap-12 w-2/3 mx-auto'>
+      <h1 className="text-3xl text-center p-10 uppercase">Check out</h1>
+      <div className='grid auto-rows-[14rem] gap-3 p-4'>
         {items}
       </div>
       <p className='text-center text-4xl text-bold'>{total}</p>
