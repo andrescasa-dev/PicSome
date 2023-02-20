@@ -19,6 +19,8 @@ const UserContextProvider = ({ children }) => {
   const removeCartItem = (id) => {
     setCartItems((prevCartItems) => prevCartItems.filter(item => item.id !== id))
   }
+  const removeAllCartItems = () => setCartItems([])
+
   useEffect(() => {
     fetch(API_URL)
       .then(response => response.json())
@@ -26,7 +28,7 @@ const UserContextProvider = ({ children }) => {
   }, [])
 
   return (
-    <userContext.Provider value={{ photos, updatePhoto, addCartItem, removeCartItem, cartItems }}>
+    <userContext.Provider value={{ photos, updatePhoto, addCartItem, removeCartItem, cartItems, removeAllCartItems }}>
       {children}
     </userContext.Provider>
   )
