@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { userContext } from '../context/userContext'
 
 const Header = props => {
-  console.log(userContext)
   const { cartItems } = useContext(userContext)
   const cartIcon = cartItems.length > 0
     ? <i className="ri-shopping-cart-2-fill ri-fw ri-2x"></i>

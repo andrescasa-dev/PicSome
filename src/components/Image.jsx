@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { userContext } from '../context/userContext'
+import useHover from '../hooks/useHover'
 const Image = (props) => {
   const { url, id, isFavorite } = props
   const { updatePhoto, addCartItem, removeCartItem, cartItems } = useContext(userContext)
-  const [isHovered, setIsHovered] = useState(false)
+  const { isHovered, refHover } = useHover()
   const isInCart = cartItems.some(item => item.id === id)
 
-  const toggleIsHovered = (e) => setIsHovered(wasHovered => !wasHovered)
   const toggleIsFavorite = (e) => {
     const newPhoto = { isFavorite: !isFavorite }
     updatePhoto(id, newPhoto)
@@ -26,7 +26,7 @@ const Image = (props) => {
     : <i onClick={(e) => { addCartItem({ id, url }) }} className={'ri-shopping-cart-2-line cart rounded-md absolute top-0 w-fit right-0 m-4 mx-10 my-6 text-3xl cursor-pointer h-fit'}></i>
 
   return (
-    <div className="relative font-bold" onMouseEnter={toggleIsHovered} onMouseLeave={toggleIsHovered} >
+    <div ref={refHover} className="relative font-bold" >
       <img className={`w-full max-w-md max-h-[20rem] ${isHovered && 'opacity-60'}`} src={url} alt={`image number ${id}`} />
       {isHovered && heartIcon}
       {isHovered && addIcon}
