@@ -27,7 +27,7 @@ const Image = (props) => {
 
   return (
     <div ref={refHover} className="relative font-bold" >
-      <img className={`w-full max-w-md max-h-[20rem] ${isHovered && 'opacity-60'}`} src={url} alt={`image number ${id}`} />
+      <img className={`w-full mb-4 object-cover max-h-[20rem] ${isHovered && 'opacity-60'}`} src={url} alt={`image number ${id}`} />
       {isHovered && heartIcon}
       {isHovered && addIcon}
     </div>

@@ -6,8 +6,10 @@ const Photos = props => {
   const { photos } = useContext(userContext)
   const imagesDom = photos.map(photoData => <Image key={photoData.id} {...photoData} />)
   return (
-    <main className='flex flex-wrap items-center justify-between px-10 pb-10'>
-      {imagesDom}
+    <main className='main-grid '>
+      <div className='col-start-2 col-end-[-2] photos'>
+        {imagesDom}
+        </div>
     </main>
   )
 }
